@@ -1,0 +1,31 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP.NET Core service.
+
+version: '3.4'
+
+networks:
+  dev:
+    driver: bridge
+
+services:
+  graphqlproject:
+    image: graphqlproject
+    build:
+      context: .
+      dockerfile: GraphQLProject/GraphQLProject/Dockerfile
+    ports:
+      - 5007:5007
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server
+    ports:
+      - "1433:1433"
+    environment:
+      MSSQL_SA_PASSWORD: "MyPass@word"
+      ACCEPT_EULA: "Y"
+      MSSQL_USER: "SA"
+
+
+volumes:
+  app_data:
