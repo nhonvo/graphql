@@ -1,5 +1,16 @@
 # GraphQL Project
 
+## Run
+
+
+```bash
+docker compose up --build
+cd GraphQLProject/GraphQLProject
+dotnet run
+```
+
+- open link `https://localhost:5006/graphql`
+
 ## Query
 
 ### GetAll
